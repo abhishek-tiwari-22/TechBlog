@@ -1,0 +1,3 @@
+[submodule "blogapp-ui"]
+    path = blogapp-ui
+    url = https://github.com/abhishek-tiwari-22/blogapp-ui.git
