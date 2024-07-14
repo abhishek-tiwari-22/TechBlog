@@ -567,7 +567,7 @@
         "kind": 6,
         "importPath": "database.models",
         "description": "database.models",
-        "peekOfCode": "class DbPost(Base):\n    __tablename__ = \"post\"\n    id = Column(Integer, primary_key=True, index=True)\n    image_url = Column(String)\n    title = Column(String)\n    content = Column(String)\n    creator = Column(String)\n    timestamp = Column(DateTime)",
+        "peekOfCode": "class DbPost(Base):\n    __tablename__ = \"post\"\n    id = Column(Integer, primary_key=True, index=True)\n    image_url = Column(String)\n    title = Column(String)\n    content = Column(String(length=10000))\n    creator = Column(String)\n    timestamp = Column(DateTime)",
         "detail": "database.models",
         "documentation": {}
     },
@@ -720,7 +720,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "app = FastAPI()\napp.include_router(post.router)\nmodels.Base.metadata.create_all(engine)\napp.mount('/images', StaticFiles(directory='images'), name='images')\norigins = [\n    'http://localhost:3000'\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,",
+        "peekOfCode": "app = FastAPI()\napp.include_router(post.router)\nmodels.Base.metadata.create_all(engine)\napp.mount('/images', StaticFiles(directory='images'), name='images')\norigins = [\n    '*'\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,",
         "detail": "main",
         "documentation": {}
     },
@@ -729,7 +729,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "origins = [\n    'http://localhost:3000'\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,\n    allow_credentials=True,\n    allow_methods=['*'],\n    allow_headers=['*']\n)",
+        "peekOfCode": "origins = [\n    '*'\n]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)",
         "detail": "main",
         "documentation": {}
     }
